@@ -1,0 +1,15 @@
+{
+  "bak_uuid": "11111111-1111-1111-1111-111111111111",
+  "starting": "/home/claude",
+  "main_backup_dir": "/mnt/part_backup",
+  "name": "moky",
+  "exclude": [
+    ".cache",
+    ".pyenv",
+    ".npm",
+    ".cache", 
+    ".nvm",
+    ".pyenv",
+    ".nvm"
+  ]
+}
