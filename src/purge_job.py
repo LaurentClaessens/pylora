@@ -29,7 +29,6 @@ class PurgeJob:
             print("  bak", self.source)
             print("  loc", local_file)
             print("  dst", self.destination)
-            print("je dirais que oui")
         return False
 
     @manage_crashs
