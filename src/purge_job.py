@@ -25,10 +25,11 @@ class PurgeJob:
         """Say if self is a job that has to be done."""
         local_file = self.paths.bak_to_local(self.source)
         if not local_file.is_file():
-            print("ok purge pour")
+            print("has to do purge for")
             print("  bak", self.source)
             print("  loc", local_file)
             print("  dst", self.destination)
+            return True
         return False
 
     @manage_crashs
