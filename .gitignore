@@ -5,7 +5,7 @@ config.json
 venv/
 
 # personal config
-config.cfg
+moky_config.json
 .directory
 .kk.log
 
