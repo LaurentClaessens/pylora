@@ -2,11 +2,13 @@
 
 """Get the backup back."""
 
-from pathlib import Path
+import sys
 import shutil
+from pathlib import Path
 
 from src.exceptions import RecupDirError
 from src.utilities import ciao
+
 
 
 class RecupOptions:
@@ -85,7 +87,9 @@ class FileJob:
 
     def run(self):
         print(f"Copy {self.bak_file} -> {self.home_file}")
-        shutil.copy2(self.bak_file, self.home_file)
+        print("commenté pour éviter de faire des bêtises")
+        # shutil.copy2(self.bak_file, self.home_file)
+        _ = shutil
 
 
 def fill_from_dir(bak_dir:Path, options:'RecupOptions'):
@@ -126,8 +130,8 @@ def run_jobs(options:'RecupOptions'):
         file_job.run()
 
 
-bak_dir = Path('/mnt/sdc3/bakatot.moky/')
-home_dir = Path('/home/moky')
+bak_dir = Path(sys.argv[1])
+home_dir = Path(sys.argv[2])
 ciao("attention aux noms des répertoires")
 options = RecupOptions(bak_dir, home_dir)
 fill_from_dir(bak_dir, options)
