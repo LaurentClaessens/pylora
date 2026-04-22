@@ -5,7 +5,7 @@ set -u
 MAIN_DIR=$(pwd)
 VENV_DIR="$MAIN_DIR/venv"
 BIN_DIR="$VENV_DIR/bin"
-PYTHON_VERSION=3.10.6
+PYTHON_VERSION=3.13.1
 pyenv_dst=~/.pyenv
 PYTHON3="$pyenv_dst/versions/$PYTHON_VERSION/bin/python3"
 
