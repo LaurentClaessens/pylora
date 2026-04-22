@@ -1,5 +1,7 @@
 #!venv/bin/python3
 
+from typing import Any
+
 
 import dirmanage
 from src.get_args import get_pylora_args
@@ -10,8 +12,8 @@ from src.backup_job import BackupJob
 from src.purge_job import PurgeJob
 from src.utilities import ciao
 from src.utilities import dprint
-_ = dirmanage
-_ = ciao, dprint
+_:Any = dirmanage
+_:Any = ciao, dprint
 
 
 def do_backup(options: Options):

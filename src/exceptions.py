@@ -15,3 +15,7 @@ class MtimeError(PyLoraError):
 
 class ClosedManager(PyLoraError):
     """The jobs manager is closed."""
+
+
+class RecupDirError(PyLoraError):
+    """The back directory does not exist."""
