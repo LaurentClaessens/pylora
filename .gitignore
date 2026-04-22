@@ -6,6 +6,7 @@ venv/
 
 # personal config
 moky_*.json
+config_livdeo_*
 .directory
 .kk.log
 
