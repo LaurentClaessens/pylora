@@ -1,5 +1,6 @@
 """Furnish options class for the inference."""
 
+from pathlib import Path
 
 import dirmanage
 from src.paths_keeper import PathsKeeper
@@ -32,3 +33,4 @@ class Options:
         self.config = read_json_file(config_file)
         self.paths = PathsKeeper(self)
         self.jobs_manager = JobsManager(self)
+        self.mtime_issues:list[Path] = []

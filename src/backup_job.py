@@ -7,7 +7,6 @@ from pathlib import Path
 
 from src.getters import get_paths
 from src.getters import get_options
-from src.exceptions import MtimeError
 from src.utilities_b import manage_crashs
 from src.utilities import human_timestamp
 from src.utilities import dprint
@@ -51,9 +50,9 @@ class BackupJob:
             dprint("  dst : ", dest_mtime, human_timestamp(dest_mtime))
             return True
         if src_mtime != dest_mtime:
-            text = f"Problem with mtime of "\
-                   f"{self.source} Vs {self.destination}"
-            raise MtimeError(text)
+            text = f"Problem with mtime of {self.destination}"
+            print(text)
+            self.options.mtime_issues.append(self.destination)
         src_size = os.path.getsize(self.source)
         dst_size = os.path.getsize(self.destination)
         if src_size != dst_size:

@@ -8,6 +8,7 @@ from src.get_args import get_pylora_args
 from src.options import Options
 from src.utilities_b import CloseThreads
 from src.utilities_b import all_files
+from src.utilities_b import empty_subdirs
 from src.backup_job import BackupJob
 from src.purge_job import PurgeJob
 from src.utilities import ciao
@@ -32,10 +33,37 @@ def do_purge(options: Options):
         options.jobs_manager.append(job)
 
 
+def do_rm_empty_dirs(options:Options):
+    """Remove the empty directories from the backup."""
+    bak_dir = options.paths["bakatot_dir"]
+    for em_dir in empty_subdirs(bak_dir):
+        print(f"Vide : {em_dir}")
+        if em_dir.is_dir():
+            em_dir.rmdir()
+
+
+def do_show_empty_dirs(options:Options):
+    """Show the empty directories in the original dir."""
+    bak_dir = options.paths["starting"]
+    for em_dir in empty_subdirs(bak_dir):
+        print(f"Vide : {em_dir}")
+
+
+def do_show_mtime_issues(options:Options):
+    """Show the files with mtime issues."""
+    print("Problèmes de mtime : ")
+    for filepath in options.mtime_issues:
+        print(filepath)
+
+
+
 def do_work(options: Options):
     """Make backup, then purge."""
     do_backup(options)
     do_purge(options)
+    do_rm_empty_dirs(options)
+    do_show_empty_dirs(options)
+    do_show_mtime_issues(options)
 
 
 def ask_for_mount(options):
@@ -48,6 +76,7 @@ def ask_for_mount(options):
     if answer != "y":
         print("I do nothing")
         ciao()
+
 
 
 args = get_pylora_args()

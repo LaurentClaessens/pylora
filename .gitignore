@@ -9,6 +9,7 @@ moky_*.json
 config_livdeo_*
 .directory
 .kk.log
+work.py
 
 # vim tmp files
 *.swp
