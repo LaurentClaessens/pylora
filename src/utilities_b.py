@@ -1,5 +1,6 @@
 """Some project-related utilities."""
 
+import os
 from pathlib import Path
 from functools import cache
 
@@ -95,6 +96,8 @@ def is_empty_dir(directory:Path)->bool:
 
 def empty_subdirs(directory: Path):
     """Yield the emty subdirectories of the given one."""
+    if os.access(directory, os.R_OK):
+        return
     found_empties: list[Path] = []
     for elem in directory.iterdir():
         if elem.is_symlink():
